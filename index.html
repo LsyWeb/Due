@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red{
+      color: red;
+    }
+    .green{
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test">
+    name:{{name}}
+    age:{{age}}
+    <span>
+      年龄:{{age}}
+    </span>
+    <p>
+      省份:{{address.province}}
+      城市:{{address.city}}
+    </p>
+    请输入：<input type="text" v-model="address.city">
+    <ul>
+      <li v-for="(item) in list">
+        a:{{item.a}}
+        b:{{item.b}}
+      </li>
+    </ul>
+    <img :src="text"></img>
+    <div>
+      <span :class="{red: name === 'xiaoliu'}">{{text}}</span>
+      <span :class="{green: age > 2}">{{text}}</span>
+    </div>
+  </div>
+  <script type="module">
+    import Due from './index.js'
+    const test = new Due({
+      el: 'test',
+      data: {
+        name: 'liushuaiyang',
+        age: 20,
+        address: {
+          province: '河南省',
+          city: '郑州市',
+        },
+        text:"这是一段文本",
+        list: [
+          {
+            a: 1,
+            b: 2
+          },
+          {
+            a:2,
+            b:3
+          },
+        ]
+      },
+      methods:{
+        enter(){
+          console.log('enter',this)
+        }
+      }
+    });
+    window.test = test;
+  </script>
+</body>
+
+</html>
